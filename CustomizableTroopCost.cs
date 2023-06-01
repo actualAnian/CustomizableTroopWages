@@ -15,59 +15,59 @@ namespace CustomizableTroopWages
 
             if (troop.Level <= 1)
             {
-                _recruitCost = Settings.Instance.troopTier0RecruitCost;
+                _recruitCost = Settings.Instance.TroopTier0RecruitCost;
             }
             else if (troop.Level <= 6)
             {
-                _recruitCost = Settings.Instance.troopTier1RecruitCost;
+                _recruitCost = Settings.Instance.TroopTier1RecruitCost;
             }
             else if (troop.Level <= 11)
             {
-                _recruitCost = Settings.Instance.troopTier2RecruitCost;
+                _recruitCost = Settings.Instance.TroopTier2RecruitCost;
             }
             else if (troop.Level <= 16)
             {
-                _recruitCost = Settings.Instance.troopTier3RecruitCost;
+                _recruitCost = Settings.Instance.TroopTier3RecruitCost;
             }
             else if (troop.Level <= 21)
             {
-                _recruitCost = Settings.Instance.troopTier4RecruitCost;
+                _recruitCost = Settings.Instance.TroopTier4RecruitCost;
             }
             else if (troop.Level <= 26)
             {
-                _recruitCost = Settings.Instance.troopTier5RecruitCost;
+                _recruitCost = Settings.Instance.TroopTier5RecruitCost;
             }
             else if (troop.Level <= 31)
             {
-                _recruitCost = Settings.Instance.troopTier6RecruitCost;
+                _recruitCost = Settings.Instance.TroopTier6RecruitCost;
             }
             else if (troop.Level <= 36)
             {
-                _recruitCost = Settings.Instance.troopTier7RecruitCost;
+                _recruitCost = Settings.Instance.TroopTier7RecruitCost;
             }
             else
             {
-                _recruitCost = Settings.Instance.troopTierRestRecruitCost;
+                _recruitCost = Settings.Instance.TroopTierRestRecruitCost;
             }
             if (troop.Equipment.Horse.Item != null && !withoutItemCost)
             {
                 if (troop.Level < 26)
                 {
-                    _recruitCost += Settings.Instance.troopTier5AndLessHorseCost;
+                    _recruitCost += Settings.Instance.TroopTier5AndLessHorseCost;
                 }
                 else
                 {
-                    _recruitCost += Settings.Instance.troopTier6AndMoreHorseCost;
+                    _recruitCost += Settings.Instance.TroopTier6AndMoreHorseCost;
                 }
             }
             if (troop.Occupation == Occupation.Mercenary)
-                _recruitCost = MathF.Round((float)_recruitCost * Settings.Instance.mercenaryTroopRecruitMultiplier);
+                _recruitCost = MathF.Round((float)_recruitCost * Settings.Instance.MercenaryTroopRecruitMultiplier);
 
             if (troop.Occupation == Occupation.Gangster)
-                _recruitCost = MathF.Round((float)_recruitCost * Settings.Instance.banditTroopRecruitMultiplier);
+                _recruitCost = MathF.Round((float)_recruitCost * Settings.Instance.BanditTroopRecruitMultiplier);
 
             if (troop.Occupation == Occupation.CaravanGuard)
-                _recruitCost = MathF.Round((float)_recruitCost * Settings.Instance.caravanGuardTroopRecruitMultiplier);
+                _recruitCost = MathF.Round((float)_recruitCost * Settings.Instance.CaravanGuardTroopRecruitMultiplier);
 
             return _recruitCost;
         }

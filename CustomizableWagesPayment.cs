@@ -29,7 +29,7 @@ namespace CustomizableTroopWages
                 return 0;
 
             int _tempDaysSinceWage = daysSinceWage + 1;
-            if (_tempDaysSinceWage >= Settings.Instance.daysBetweenWagePayment)
+            if (_tempDaysSinceWage >= Settings.Instance.DaysBetweenWagePayment)
                 _tempDaysSinceWage = 0;
 
             if (!_dailyTickPlayerState)

@@ -71,7 +71,7 @@ namespace CustomizableTroopWages
 
         public static float ChooseMultiplier(CharacterObject character)
         {
-            float multiplier = 1; ;
+            float multiplier = 1;
 
             if (!_isPlayerRelated)
                 return multiplier;
@@ -79,28 +79,28 @@ namespace CustomizableTroopWages
             switch (character.Tier)
             {
                 case 0:
-                    multiplier = Settings.Instance.troopTier0WageMultiplier;
+                    multiplier = Settings.Instance.TroopTier0WageMultiplier;
                     break;
                 case 1:
-                    multiplier = Settings.Instance.troopTier1WageMultiplier;
+                    multiplier = Settings.Instance.TroopTier1WageMultiplier;
                     break;
                 case 2:
-                    multiplier = Settings.Instance.troopTier2WageMultiplier;
+                    multiplier = Settings.Instance.TroopTier2WageMultiplier;
                     break;
                 case 3:
-                    multiplier = Settings.Instance.troopTier3WageMultiplier;
+                    multiplier = Settings.Instance.TroopTier3WageMultiplier;
                     break;
                 case 4:
-                    multiplier = Settings.Instance.troopTier4WageMultiplier;
+                    multiplier = Settings.Instance.TroopTier4WageMultiplier;
                     break;
                 case 5:
-                    multiplier = Settings.Instance.troopTier5WageMultiplier;
+                    multiplier = Settings.Instance.TroopTier5WageMultiplier;
                     break;
                 case 6:
-                    multiplier = Settings.Instance.troopTier6WageMultiplier;
+                    multiplier = Settings.Instance.TroopTier6WageMultiplier;
                     break;
                 default:
-                    multiplier = Settings.Instance.troopTier7WageMultiplier;
+                    multiplier = Settings.Instance.TroopTier7WageMultiplier;
                     break;
             }
 
@@ -108,21 +108,21 @@ namespace CustomizableTroopWages
             if (IsNoble(character))
             {
                 if (character.IsMounted)
-                    return multiplier * Settings.Instance.troopIsNobleMountedMultiplier;
+                    return multiplier * Settings.Instance.TroopIsNobleMountedMultiplier;
                 else
-                    return multiplier * Settings.Instance.troopIsNobleOnFootMultiplier;
+                    return multiplier * Settings.Instance.TroopIsNobleOnFootMultiplier;
             }
             else
             {
                 if (character.IsMounted)
-                    return multiplier * Settings.Instance.troopIsStandardMountedMultiplier;
+                    return multiplier * Settings.Instance.TroopIsStandardMountedMultiplier;
             }
             return multiplier;
         }
         public static double AddCompanionMultiplier(CharacterObject character)
         {
             if (character.HeroObject != null && character.HeroObject.Clan == Clan.PlayerClan)
-                return Settings.Instance.companionWageMultiplier;
+                return Settings.Instance.CompanionWageMultiplier;
             return 1;
         }
     }

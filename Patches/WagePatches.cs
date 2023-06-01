@@ -75,7 +75,7 @@ namespace CustomizableTroopWages.WagePatches
         {
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                int number_get_wage_called = 0; // used to decided whether to pass character or characterObject variable
+                
                 var method_get_wage = AccessTools.Method(typeof(PartyWageModel), nameof(PartyWageModel.GetCharacterWage));
                 yield return new CodeInstruction(OpCodes.Ldarg_1, null);
                 yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(CustomizableTroopWages), nameof(CustomizableTroopWages.IsPlayerRelated), new Type[] { typeof(PartyBase) }));
@@ -95,7 +95,7 @@ namespace CustomizableTroopWages.WagePatches
         {
             static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-                bool found = false;
+
                 var method_get_wage_default = AccessTools.Method(typeof(DefaultPartyWageModel), nameof(DefaultPartyWageModel.GetCharacterWage));
                 var method_get_wage = AccessTools.Method(typeof(PartyWageModel), nameof(PartyWageModel.GetCharacterWage));
 

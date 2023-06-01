@@ -1,6 +1,7 @@
 ﻿using CustomizableTroopWages.CostPatches;
 using CustomizableTroopWages.WagePatches;
 using HarmonyLib;
+using MCM.Abstractions.Base.Global;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.Core;
 using TaleWorlds.MountAndBlade;
@@ -10,6 +11,7 @@ namespace CustomizableTroopWages
     public class SubModule : MBSubModuleBase
     {
         public static readonly Harmony harmony = new("CustomizableTroopWagesPaymentTime");
+        private bool manualPatchesHaveFired = false;
         protected override void OnSubModuleLoad()
         {
             base.OnSubModuleLoad();
@@ -33,7 +35,11 @@ namespace CustomizableTroopWages
         public override void OnGameInitializationFinished(Game game)
         {
             base.OnGameInitializationFinished(game);
-            RunManualPatches();
+            if(!manualPatchesHaveFired)
+            {
+                manualPatchesHaveFired = true;
+                RunManualPatches();
+            }
         }
 
         private void RunManualPatches()
@@ -56,7 +62,9 @@ namespace CustomizableTroopWages
         protected override void OnBeforeInitialModuleScreenSetAsRoot()
         {
             base.OnBeforeInitialModuleScreenSetAsRoot();
-            Settings.Instance.registerSettings();
+            MCM.Abstractions.FluentBuilder.ISettingsBuilder settingsBuilder = Settings.Instance.RegisterSettings();
+            FluentGlobalSettings settings = settingsBuilder.BuildAsGlobal();
+            settings.Register();
         }
     }
 }
