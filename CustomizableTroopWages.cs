@@ -45,29 +45,6 @@ namespace CustomizableTroopWages
             if (!_dontSwitchPlayerRelated)
                 _isPlayerRelated = false;
         }
-        private static bool IsNoble(CharacterObject character)
-        {
-            if (!character.Culture.IsMainCulture)
-                return false;
-
-            Stack<CharacterObject> troops_stack = new Stack<CharacterObject>();
-            troops_stack.Push(character.Culture.EliteBasicTroop);
-            while (troops_stack.Count != 0)
-            {
-                CharacterObject cur_troop = troops_stack.Pop();
-                if (cur_troop.Tier < character.Tier)
-                {
-                    CharacterObject[] upgrade_array = cur_troop.UpgradeTargets;
-                    foreach (var troop_char in upgrade_array)
-                        troops_stack.Push(troop_char);
-
-                }
-                else if (cur_troop.Tier == character.Tier)
-                    if (cur_troop.StringId == character.StringId)
-                        return true;
-            }
-            return false;
-        }
 
         public static float ChooseMultiplier(CharacterObject character)
         {
@@ -76,48 +53,25 @@ namespace CustomizableTroopWages
             if (!_isPlayerRelated)
                 return multiplier;
 
-            switch (character.Tier)
+            multiplier = character.Tier switch
             {
-                case 0:
-                    multiplier = Settings.Instance.TroopTier0WageMultiplier;
-                    break;
-                case 1:
-                    multiplier = Settings.Instance.TroopTier1WageMultiplier;
-                    break;
-                case 2:
-                    multiplier = Settings.Instance.TroopTier2WageMultiplier;
-                    break;
-                case 3:
-                    multiplier = Settings.Instance.TroopTier3WageMultiplier;
-                    break;
-                case 4:
-                    multiplier = Settings.Instance.TroopTier4WageMultiplier;
-                    break;
-                case 5:
-                    multiplier = Settings.Instance.TroopTier5WageMultiplier;
-                    break;
-                case 6:
-                    multiplier = Settings.Instance.TroopTier6WageMultiplier;
-                    break;
-                default:
-                    multiplier = Settings.Instance.TroopTier7WageMultiplier;
-                    break;
-            }
-
-
-            if (IsNoble(character))
+                0 => Settings.Instance.TroopTier0WageMultiplier,
+                1 => Settings.Instance.TroopTier1WageMultiplier,
+                2 => Settings.Instance.TroopTier2WageMultiplier,
+                3 => Settings.Instance.TroopTier3WageMultiplier,
+                4 => Settings.Instance.TroopTier4WageMultiplier,
+                5 => Settings.Instance.TroopTier5WageMultiplier,
+                6 => Settings.Instance.TroopTier6WageMultiplier,
+                _ => Settings.Instance.TroopTier7WageMultiplier,
+            };
+            return character.GetTroopType() switch
             {
-                if (character.IsMounted)
-                    return multiplier * Settings.Instance.TroopIsNobleMountedMultiplier;
-                else
-                    return multiplier * Settings.Instance.TroopIsNobleOnFootMultiplier;
-            }
-            else
-            {
-                if (character.IsMounted)
-                    return multiplier * Settings.Instance.TroopIsStandardMountedMultiplier;
-            }
-            return multiplier;
+                Helper.TroopType.StandardOnFoot => multiplier,
+                Helper.TroopType.StandardMounted => multiplier * Settings.Instance.TroopIsStandardMountedMultiplier,
+                Helper.TroopType.NobleOnFoot => multiplier * Settings.Instance.TroopIsNobleOnFootMultiplier,
+                Helper.TroopType.NobleMounted => multiplier * Settings.Instance.TroopIsNobleMountedMultiplier,
+                _ => multiplier,
+            };
         }
         public static double AddCompanionMultiplier(CharacterObject character)
         {

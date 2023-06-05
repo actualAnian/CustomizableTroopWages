@@ -1,0 +1,5 @@
+.vs/
+bin/
+obj/
+.gitconfig
+CustomizableTroopWages.csproj.user

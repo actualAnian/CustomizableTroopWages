@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+	<tags>
+		<tag language="English"/>
+	</tags>
+	<strings>
+
+		<string id="ctw_wage_multiplier" text="Wage Multiplier" />
+		<string id="ctw_special_wage_multiplier" text="Special Wage Multiplier" />
+		<string id="ctw_recruit_cost" text="Recruit Cost (in denars)" />
+		<string id="ctw_recruitment_horses_cost" text="Recruitment Horses Cost" />
+		<string id="ctw_sp_troop_recruitment_multi" text="Special Troop Types Recruitment Multiplier" />
+		<string id="ctw_time_before_next_wage_payment" text="Time Before Next Wage Payment" />
+
+		<string id="ctw_tier0_wage_mult" text="Tier 0 troop wage multiplier" />
+		<string id="ctw_tier0_wage_mult_desc" text="Multiplies and rounds up the wage of the troop. Native cost is 1" />
+		<string id="ctw_tier1_wage_mult" text="Tier 1 troop wage multiplier" />
+		<string id="ctw_tier1_wage_mult_desc" text="Multiplies and rounds up the wage of the troop. Native cost is 2" />
+		<string id="ctw_tier2_wage_mult" text="Tier 2 troop wage multiplier" />
+		<string id="ctw_tier2_wage_mult_desc" text="Multiplies and rounds up the wage of the troop. Native cost is 3" />
+		<string id="ctw_tier3_wage_mult" text="Tier 3 troop wage multiplier" />
+		<string id="ctw_tier3_wage_mult_desc" text="Multiplies and rounds up the wage of the troop. Native cost is 5" />
+		<string id="ctw_tier4_wage_mult" text="Tier 4 troop wage multiplier" />
+		<string id="ctw_tier4_wage_mult_desc" text="Multiplies and rounds up the wage of the troop. Native cost is 8" />
+		<string id="ctw_tier5_wage_mult" text="Tier 5 troop wage multiplier" />
+		<string id="ctw_tier5_wage_mult_desc" text="Multiplies and rounds up the wage of the troop. Native cost is 12" />
+		<string id="ctw_tier6_wage_mult" text="Tier 6 troop wage multiplier" />
+		<string id="ctw_tier6_wage_mult_desc" text="Multiplies and rounds up the wage of the troop. Native cost is 17" />
+		<string id="ctw_tier7_wage_mult" text="Tier 7 and higher troop wage multiplier" />
+		<string id="ctw_tier7_wage_mult_desc" text="Multiplies and rounds up the wage of the troop. Native cost is 23" />
+
+		<string id="ctw_comp_wage_mult" text="Companion wage multiplier" />
+		<string id="ctw_comp_wage_mult_desc" text="Multiplies and rounds up the wage of the companion. Native calculation is 2 + 2 * companion_level" />
+		<string id="ctw_noble_on_foot_wage_mult" text="Noble troop on foot multiplier" />
+		<string id="ctw_noble_on_foot_wage_mult_desc" text="Additionally multiplies wages of a troop if they are noble and on foot, Native is 1" />
+		<string id="ctw_noble_mounted_mult" text="Noble Mounted troop multiplier" />
+		<string id="ctw_noble_mounted_mult_desc" text="Additionally multiplies wages of a troop if they are noble and mounted, Native is 1" />
+		<string id="ctw_standard_mounted_wage_mult" text="Standard Mounted troop multiplier" />
+		<string id="ctw_standard_mounted_wage_mult_desc" text="Additionally multiplies wages of a troop if they are NOT noble but they are mounted, Native is 1" />
+
+		<string id="ctw_tier0_rec_cost" text="Troop tier 0 recruitment cost" />
+		<string id="ctw_tier0_rec_cost_desc" text="Native is 10" />
+		<string id="ctw_tier1_rec_cost" text="Troop tier 1 recruitment cost" />
+		<string id="ctw_tier1_rec_cost_desc" text="Native is 20" />
+		<string id="ctw_tier2_rec_cost" text="Troop tier 2 recruitment cost" />
+		<string id="ctw_tier2_rec_cost_desc" text="Native is 50" />
+		<string id="ctw_tier3_rec_cost" text="Troop tier 3 recruitment cost" />
+		<string id="ctw_tier3_rec_cost_desc" text="Native is 100" />
+		<string id="ctw_tier4_rec_cost" text="Troop tier 4 recruitment cost" />
+		<string id="ctw_tier4_rec_cost_desc" text="Native is 200" />
+		<string id="ctw_tier5_rec_cost" text="Troop tier 5 recruitment cost" />
+		<string id="ctw_tier5_rec_cost_desc" text="Native is 400" />
+		<string id="ctw_tier6_rec_cost" text="Troop tier 6 recruitment cost" />
+		<string id="ctw_tier6_rec_cost_desc" text="Native is 600" />
+		<string id="ctw_tier7_rec_cost" text="Troop tier 7 recruitment cost" />
+		<string id="ctw_tier7_rec_cost_desc" text="Native is 1000" />
+		<string id="ctw_other_rec_cost" text="Other category troop recruitment cost" />
+		<string id="ctw_other_rec_cost_desc" text="Native is 1500" />
+
+		<string id="ctw_tier5_less_horse_rec_cost" text="Troop tier 5 or less horse recruitment cost" />
+		<string id="ctw_tier5_less_horse_rec_cost_desc" text="How much of the recruitment cost should the horse add. Native is 150" />
+		<string id="ctw_tier6_more_horse_rec_cost" text="Other category troop horse recruitment cost" />
+		<string id="ctw_tier6_more_horse_rec_costdesc" text="How much of the recruitment cost should the horse add. Native is 500" />
+
+		<string id="ctw_mercenary_rec_mult" text="Mercenary troop recruitment multiplier" />
+		<string id="ctw_mercenary_rec_mult_desc" text="Multiplies and rounds up the recruitment cost of the mercenary troops. Native is 2" />
+		<string id="ctw_bandit_rec_mult" text="Bandit troop recruitment multiplier" />
+		<string id="ctw_bandit_rec_mult_desc" text="Multiplies and rounds up the recruitment cost of the bandit troops. Native is 2" />
+		<string id="ctw_caravan_rec_mult" text="Caravan guard troop recruitment multiplier" />
+		<string id="ctw_caravan_rec_mult_desc" text="Multiplies and rounds up the recruitment cost of the Caravan guard troops. Native is 2" />
+		
+		<string id="days_before_wage_payment" text="Days before next wage payment" />
+		<string id="days_before_wage_payment_desc" text="How many days should pass before next clan wage payment. Native is 1"/>
+
+		<string id="ctw_standard_upgrade_mult" text="Standard troop upgrade multiplier" />
+		<string id="ctw_standard_upgrade_mult_desc" text="Multiplies and rounds up cost of the troop upgrade if next tier troop is standard"/>
+		<string id="ctw_noble_upgrade_mult" text="Noble troop upgrade multiplier" />
+		<string id="ctw_noble_upgrade_mult_desc" text="Multiplies and rounds up cost of the troop upgrade if next tier troop is noble"/>
+
+	</strings>
+</base>

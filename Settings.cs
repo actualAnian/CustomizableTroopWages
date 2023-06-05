@@ -8,8 +8,7 @@ namespace CustomizableTroopWages
     internal class Settings
     {
         private static Settings? _instance;
-        private readonly FluentGlobalSettings? globalSettings;
-
+        
         public void Dispose()
         {
         }
@@ -58,6 +57,8 @@ namespace CustomizableTroopWages
 
         public int DaysBetweenWagePayment { get; set; } = 1;
 
+        public float StandardTroopUpgradeMult { get; set; } = 1f;
+        public float NobleTroopUpgradeMult { get; set; } = 1f;
 
 
 
@@ -75,6 +76,7 @@ namespace CustomizableTroopWages
                 .CreateGroup("{=ctw_recruitment_horses_cost}Recruitment Horses Cost", BuildHorsesCostSettings)
                 .CreateGroup("{=ctw_sp_troop_recruitment_multi}Special Troop Types Recruitment Multiplier", BuildSpecialTroopRecruitmentSettings)
                 .CreateGroup("{=ctw_time_before_next_wage_payment}Time Before Next Wage Payment", BuildTimeBeforeNextWagePaymentSettings)
+                .CreateGroup("{=ctw_upgrade_cost_mult}Upgrade Troop Multiplier", BuildUpgradeCostMultiplierSettings)
 
                 .CreatePreset(BaseSettings.DefaultPresetId, BaseSettings.DefaultPresetName, builder => BuildDefaultPreset(builder, new()));
 
@@ -115,7 +117,10 @@ namespace CustomizableTroopWages
                     .SetPropertyValue("banditTroopRecruitMultiplier", Settings.Instance.BanditTroopRecruitMultiplier)
                     .SetPropertyValue("caravanGuardTroopRecruitMultiplier", Settings.Instance.CaravanGuardTroopRecruitMultiplier)
 
-                    .SetPropertyValue("daysBetweenWagePayment", Settings.Instance.DaysBetweenWagePayment);
+                    .SetPropertyValue("daysBetweenWagePayment", Settings.Instance.DaysBetweenWagePayment)
+
+                    .SetPropertyValue("StandardTroopUpgradeMult", Settings.Instance.StandardTroopUpgradeMult)
+                    .SetPropertyValue("NobleTroopUpgradeMult", Settings.Instance.NobleTroopUpgradeMult);
 
             void BuildWageMultiplierSettings(ISettingsPropertyGroupBuilder builder)
                 => builder
@@ -215,6 +220,13 @@ namespace CustomizableTroopWages
                     .SetHintText("{=days_before_wage_payment_desc}How many days should pass before next clan wage payment. Native is 1"))
                  .SetGroupOrder(6);
 
+            void BuildUpgradeCostMultiplierSettings(ISettingsPropertyGroupBuilder builder)
+                => builder
+                .AddFloatingInteger("StandardTroopUpgradeMult", "{=ctw_standard_upgrade_mult}Standard troop upgrade multiplier", 0, 1000, new ProxyRef<float>(() => StandardTroopUpgradeMult, o => StandardTroopUpgradeMult = o), floatingBuilder => floatingBuilder
+                    .SetHintText("{=ctw_standard_upgrade_mult_desc}Multiplies and rounds up cost of the troop upgrade if next tier troop is standard"))
+                .AddFloatingInteger("NobleTroopUpgradeMult", "{=ctw_noble_upgrade_mult}Noble troop upgrade multiplier", 0, 1000, new ProxyRef<float>(() => NobleTroopUpgradeMult, o => NobleTroopUpgradeMult = o), floatingBuilder => floatingBuilder
+                    .SetHintText("{=ctw_noble_upgrade_mult_desc}Multiplies and rounds up cost of the troop upgrade if next tier troop is noble"))
+                .SetGroupOrder(7);
         }
     }
 }
