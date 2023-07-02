@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Emit;
 using TaleWorlds.CampaignSystem;
 using TaleWorlds.CampaignSystem.CampaignBehaviors;
@@ -199,12 +200,11 @@ namespace CustomizableTroopWages.WagePatches
             }
         }
         //used for information screen when hovering over a troop
-        [HarmonyPatch(typeof(PropertyBasedTooltipVMExtensions), "UpdateTooltip", typeof(PropertyBasedTooltipVM), typeof(CharacterObject))]
+        [HarmonyPatch(typeof(TooltipRefresherCollection), "RefreshCharacterTooltip")]
         internal class UpdateTooltipPatch
         {
-            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator ilGenerator)
+            static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
             {
-
                 yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(CustomizableTroopWages), nameof(CustomizableTroopWages.SetIsPlayerRelatedTrue)));
 
 
@@ -232,7 +232,7 @@ namespace CustomizableTroopWages.WagePatches
                 yield return instruction;
             }
         }
-        internal static IEnumerable<CodeInstruction> GetTotalWagePatch(IEnumerable<CodeInstruction> instructions, ILGenerator ilGenerator)
+        internal static IEnumerable<CodeInstruction> GetTotalWagePatch(IEnumerable<CodeInstruction> instructions)
         {
             yield return new CodeInstruction(OpCodes.Ldarg_1, null);
             yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(CustomizableTroopWages), nameof(CustomizableTroopWages.IsPlayerRelated), new Type[] { typeof(MobileParty) }));
